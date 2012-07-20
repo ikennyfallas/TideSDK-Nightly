@@ -52,6 +52,7 @@ module Build::Views
 							th {"Size"}
 							th {"SHA"}
 							th {"Architecture"}
+							th {"OS Version"}
 						}
 					}
 					tbody {
@@ -64,6 +65,7 @@ module Build::Views
 								td { text f[2] }
 								td { text f[3] }
 								td { text f[4] }
+								td { text f[6] }
 							}
 						}
 						@win64.each { |f|
@@ -75,6 +77,7 @@ module Build::Views
 								td { text f[2] }
 								td { text f[3] }
 								td { text f[4] }
+								td { text f[6] }
 							}
 						}
 					}
@@ -89,6 +92,7 @@ module Build::Views
 							th {"Size"}
 							th {"SHA"}
 							th {"Architecture"}
+							th {"OS Version"}
 						}
 					}
 					tbody {
@@ -101,6 +105,7 @@ module Build::Views
 								td { text f[2] }
 								td { text f[3] }
 								td { text f[4] }
+								td { text f[6] }
 							}
 						}
 					}
@@ -115,6 +120,7 @@ module Build::Views
 							th {"Size"}
 							th {"SHA"}
 							th {"Architecture"}
+							th {"OS Version"}
 						}
 					}
 					tbody {
@@ -127,6 +133,7 @@ module Build::Views
 								td { text f[2] }
 								td { text f[3] }
 								td { text f[4] }
+								td { text f[6] }
 							}
 						}
 						@ubuntu64.each { |f|
@@ -138,6 +145,7 @@ module Build::Views
 								td { text f[2] }
 								td { text f[3] }
 								td { text f[4] }
+								td { text f[6] }
 							}
 						}
 					}
@@ -154,6 +162,7 @@ module Build::Views
 							th {"Size"}
 							th {"SHA"}
 							th {"Architecture"}
+							th {"OS Version"}
 						}
 					}
 					tbody {
@@ -166,6 +175,7 @@ module Build::Views
 								td { text f[2] }
 								td { text f[3] }
 								td { text f[4] }
+								td { text f[6] }
 							}
 						}
 						@fedora64.each { |f|
@@ -177,6 +187,7 @@ module Build::Views
 								td { text f[2] }
 								td { text f[3] }
 								td { text f[4] }
+								td { text f[6] }
 							}
 						}
 					}
