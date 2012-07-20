@@ -4,55 +4,55 @@ module Build::Controllers
 		def get
 			#osx files
 			path = './builds/osx-x86-64/'
-			arch = 'x86 64-bit'
 			@osx = Array.new
 			topFiles(path).each { |f| @osx << [/TideSDK-([^-]+)-.*/.match(f)[1], File.mtime("#{path}#{f}"), 
-				(File.size("#{path}#{f}")/(1024.0**2.0)).round(2).to_s + "MB", /TideSDK-[^-]+-([^-]+)-.*/.match(f)[1], arch, f] }
+				(File.size("#{path}#{f}")/(1024.0**2.0)).round.to_s + "MB", /TideSDK-[^-]+-([^-]+)-.*/.match(f)[1], 
+				/TideSDK-.*-([^\.]+-[^\.]+)/.match(f)[1], f, /TideSDK-[^-]+-[^-]+-(.*)-[^-]+-[^\.]+/.match(f)[1]] }
 
 			#windows 64 files
 			path = './builds/win-x86-64/'
-			arch = 'x86 64-bit'
 			@win64 = Array.new
 			topFiles(path).each { |f| @win64 << [/TideSDK-([^-]+)-.*/.match(f)[1], File.mtime("#{path}#{f}"), 
-				(File.size("#{path}#{f}")/(1024.0**2.0)).round(2).to_s + "MB", /TideSDK-[^-]+-([^-]+)-.*/.match(f)[1], arch, f] }
+				(File.size("#{path}#{f}")/(1024.0**2.0)).round.to_s + "MB", /TideSDK-[^-]+-([^-]+)-.*/.match(f)[1], 
+				/TideSDK-.*-([^\.]+-[^\.]+)/.match(f)[1], f, /TideSDK-[^-]+-[^-]+-(.*)-[^-]+-[^\.]+/.match(f)[1]] }
 
 			#windows 32 files
 			path = './builds/win-x86/'
-			arch = 'x86 32-bit'
 			@win32 = Array.new
 			topFiles(path).each { |f| @win32 << [/TideSDK-([^-]+)-.*/.match(f)[1], File.mtime("#{path}#{f}"), 
-				(File.size("#{path}#{f}")/(1024.0**2.0)).round(2).to_s + "MB", /TideSDK-[^-]+-([^-]+)-.*/.match(f)[1], arch, f] }
+				(File.size("#{path}#{f}")/(1024.0**2.0)).round.to_s + "MB", /TideSDK-[^-]+-([^-]+)-.*/.match(f)[1],
+				/TideSDK-.*-([^\.]+-[^\.]+)/.match(f)[1], f, /TideSDK-[^-]+-[^-]+-(.*)-[^-]+-[^\.]+/.match(f)[1]] }
 
 			#ubuntu 64 files
 			path = './builds/ubuntu-x86-64/'
-			arch = 'x86 64-bit'
 			@ubuntu64 = Array.new
 			topFiles(path).each { |f| @ubuntu64 << [/TideSDK-([^-]+)-.*/.match(f)[1], File.mtime("#{path}#{f}"), 
-				(File.size("#{path}#{f}")/(1024.0**2.0)).round(2).to_s + "MB", /TideSDK-[^-]+-([^-]+)-.*/.match(f)[1], arch, f] }
+				(File.size("#{path}#{f}")/(1024.0**2.0)).round.to_s + "MB", /TideSDK-[^-]+-([^-]+)-.*/.match(f)[1], 
+				/TideSDK-.*-([^\.]+-[^\.]+)/.match(f)[1], f, /TideSDK-[^-]+-[^-]+-(.*)-[^-]+-[^\.]+/.match(f)[1]] }
 
 			#ubuntu 32 files
 			path = './builds/ubuntu-x86-64/'
-			arch = 'x86 32-bit'
 			@ubuntu32 = Array.new
 			topFiles(path).each { |f| @ubuntu32 << [/TideSDK-([^-]+)-.*/.match(f)[1], File.mtime("#{path}#{f}"), 
-				(File.size("#{path}#{f}")/(1024.0**2.0)).round(2).to_s + "MB", /TideSDK-[^-]+-([^-]+)-.*/.match(f)[1], arch, f] }
+				(File.size("#{path}#{f}")/(1024.0**2.0)).round.to_s + "MB", /TideSDK-[^-]+-([^-]+)-.*/.match(f)[1], 
+				/TideSDK-.*-([^\.]+-[^\.]+)/.match(f)[1], f, /TideSDK-[^-]+-[^-]+-(.*)-[^-]+-[^\.]+/.match(f)[1]] }
 			render :index
 
 #This bit is for Fedora support
 =begin
 			#fedora 64 files
 			path = './builds/fedora-x86-64/'
-			arch = 'x86 64-bit'
 			@fedora64 = Array.new
 			topFiles(path).each { |f| @fedora64 << [/TideSDK-([^-]+)-.*/.match(f)[1], File.mtime("#{path}#{f}"), 
-				(File.size("#{path}#{f}")/(1024.0**2.0)).round(2).to_s + "MB", /TideSDK-[^-]+-([^-]+)-.*/.match(f)[1], arch, f] }
+				(File.size("#{path}#{f}")/(1024.0**2.0)).round(2).to_s + "MB", /TideSDK-[^-]+-([^-]+)-.*/.match(f)[1], 
+				/TideSDK-.*-([^\.]+-[^\.]+)/.match(f)[1], f, /TideSDK-[^-]+-[^-]+-(.*)-[^-]+-[^\.]+/.match(f)[1]] }
 
 			#fedora 32 files
 			path = './builds/fedora-x86-64/'
-			arch = 'x86 32-bit'
 			@fedora32 = Array.new
 			topFiles(path).each { |f| @fedora32 << [/TideSDK-([^-]+)-.*/.match(f)[1], File.mtime("#{path}#{f}"), 
-				(File.size("#{path}#{f}")/(1024.0**2.0)).round(2).to_s + "MB", /TideSDK-[^-]+-([^-]+)-.*/.match(f)[1], arch, f] }
+				(File.size("#{path}#{f}")/(1024.0**2.0)).round(2).to_s + "MB", /TideSDK-[^-]+-([^-]+)-.*/.match(f)[1], 
+				/TideSDK-.*-([^\.]+-[^\.]+)/.match(f)[1], f, /TideSDK-[^-]+-[^-]+-(.*)-[^-]+-[^\.]+/.match(f)[1]] }
 =end
 		end
 
