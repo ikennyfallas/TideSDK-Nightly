@@ -10,48 +10,36 @@ module Build::Controllers
 			#windows 64 files
 			path = './builds/win-x86-64/'
 			@win64 = Array.new
-			topFiles(path).each { |f| @win64 << [/TideSDK-([^-]+)-.*/.match(f)[1], File.mtime("#{path}#{f}"), 
-				(File.size("#{path}#{f}")/(1024.0**2.0)).round.to_s + "MB", /TideSDK-[^-]+-([^-]+)-.*/.match(f)[1], 
-				/TideSDK-.*-([^\.]+-[^\.]+)/.match(f)[1], f, /TideSDK-[^-]+-[^-]+-(.*)-[^-]+-[^\.]+/.match(f)[1]] }
+			topFiles(path).each { |f| @win64 << BuildFile.new("#{path}#{f}") }
 
 			#windows 32 files
 			path = './builds/win-x86/'
 			@win32 = Array.new
-			topFiles(path).each { |f| @win32 << [/TideSDK-([^-]+)-.*/.match(f)[1], File.mtime("#{path}#{f}"), 
-				(File.size("#{path}#{f}")/(1024.0**2.0)).round.to_s + "MB", /TideSDK-[^-]+-([^-]+)-.*/.match(f)[1],
-				/TideSDK-.*-([^\.]+-[^\.]+)/.match(f)[1], f, /TideSDK-[^-]+-[^-]+-(.*)-[^-]+-[^\.]+/.match(f)[1]] }
+			topFiles(path).each { |f| @win32 << BuildFile.new("#{path}#{f}") }
 
 			#ubuntu 64 files
 			path = './builds/ubuntu-x86-64/'
 			@ubuntu64 = Array.new
-			topFiles(path).each { |f| @ubuntu64 << [/TideSDK-([^-]+)-.*/.match(f)[1], File.mtime("#{path}#{f}"), 
-				(File.size("#{path}#{f}")/(1024.0**2.0)).round.to_s + "MB", /TideSDK-[^-]+-([^-]+)-.*/.match(f)[1], 
-				/TideSDK-.*-([^\.]+-[^\.]+)/.match(f)[1], f, /TideSDK-[^-]+-[^-]+-(.*)-[^-]+-[^\.]+/.match(f)[1]] }
+			topFiles(path).each { |f| @ubuntu64 << BuildFile.new("#{path}#{f}") }
 
 			#ubuntu 32 files
 			path = './builds/ubuntu-x86-64/'
 			@ubuntu32 = Array.new
-			topFiles(path).each { |f| @ubuntu32 << [/TideSDK-([^-]+)-.*/.match(f)[1], File.mtime("#{path}#{f}"), 
-				(File.size("#{path}#{f}")/(1024.0**2.0)).round.to_s + "MB", /TideSDK-[^-]+-([^-]+)-.*/.match(f)[1], 
-				/TideSDK-.*-([^\.]+-[^\.]+)/.match(f)[1], f, /TideSDK-[^-]+-[^-]+-(.*)-[^-]+-[^\.]+/.match(f)[1]] }
-			render :index
+			topFiles(path).each { |f| @ubuntu32 << BuildFile.new("#{path}#{f}") }
 
 #This bit is for Fedora support
 =begin
 			#fedora 64 files
 			path = './builds/fedora-x86-64/'
 			@fedora64 = Array.new
-			topFiles(path).each { |f| @fedora64 << [/TideSDK-([^-]+)-.*/.match(f)[1], File.mtime("#{path}#{f}"), 
-				(File.size("#{path}#{f}")/(1024.0**2.0)).round(2).to_s + "MB", /TideSDK-[^-]+-([^-]+)-.*/.match(f)[1], 
-				/TideSDK-.*-([^\.]+-[^\.]+)/.match(f)[1], f, /TideSDK-[^-]+-[^-]+-(.*)-[^-]+-[^\.]+/.match(f)[1]] }
+			topFiles(path).each { |f| @osx << BuildFile.new("#{path}#{f}") }
 
 			#fedora 32 files
 			path = './builds/fedora-x86-64/'
 			@fedora32 = Array.new
-			topFiles(path).each { |f| @fedora32 << [/TideSDK-([^-]+)-.*/.match(f)[1], File.mtime("#{path}#{f}"), 
-				(File.size("#{path}#{f}")/(1024.0**2.0)).round(2).to_s + "MB", /TideSDK-[^-]+-([^-]+)-.*/.match(f)[1], 
-				/TideSDK-.*-([^\.]+-[^\.]+)/.match(f)[1], f, /TideSDK-[^-]+-[^-]+-(.*)-[^-]+-[^\.]+/.match(f)[1]] }
+			topFiles(path).each { |f| @osx << BuildFile.new("#{path}#{f}") }
 =end
+			render :index
 		end
 
 		private
