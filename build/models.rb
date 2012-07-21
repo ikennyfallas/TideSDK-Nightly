@@ -1,3 +1,5 @@
+include ActionView::Helpers::DateHelper
+
 module Build::Models
 	class BuildFile
 		attr_accessor :version, :size, :filepath, :filename, :os, :arch, :sha, :time
@@ -10,6 +12,10 @@ module Build::Models
 			@os = /TideSDK-[^-]+-[^-]+-(.*)-[^-]+-[^\.]+/.match(@filename)[1]
 			@arch = /TideSDK-.*-([^\.]+-[^\.]+)/.match(@filename)[1]
 			@sha = /TideSDK-[^-]+-([^-]+)-.*/.match(@filename)[1]
+		end
+
+		def relative_time
+			lambda{ return distance_of_time_in_words_to_now(@time) << " ago" }.call
 		end
 	end
 end
