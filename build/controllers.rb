@@ -5,9 +5,7 @@ module Build::Controllers
 			#osx files
 			path = './builds/osx-x86-64/'
 			@osx = Array.new
-			topFiles(path).each { |f| @osx << [/TideSDK-([^-]+)-.*/.match(f)[1], File.mtime("#{path}#{f}"), 
-				(File.size("#{path}#{f}")/(1024.0**2.0)).round.to_s + "MB", /TideSDK-[^-]+-([^-]+)-.*/.match(f)[1], 
-				/TideSDK-.*-([^\.]+-[^\.]+)/.match(f)[1], f, /TideSDK-[^-]+-[^-]+-(.*)-[^-]+-[^\.]+/.match(f)[1]] }
+			topFiles(path).each { |f| @osx << BuildFile.new("#{path}#{f}") }
 
 			#windows 64 files
 			path = './builds/win-x86-64/'

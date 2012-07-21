@@ -99,13 +99,13 @@ module Build::Views
 						@osx.each { |f|
 							tr {
 								td { 
-									a(:href => "/builds/osx-x86-64/#{f[5]}") { text f[0] } 
+									a(:href => "/builds/osx-x86-64/#{f.filename}") { text f.version } 
 								}
-								td { text f[1].strftime("%d-%m-%y") }
-								td { text f[2] }
-								td { text f[3] }
-								td { text f[4] }
-								td { text f[6] }
+								td { text f.time.strftime("%d-%m-%y") }
+								td { text f.size }
+								td { text f.sha }
+								td { text f.arch }
+								td { text f.os }
 							}
 						}
 					}
