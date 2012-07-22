@@ -1,38 +1,14 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-}
-
-.wood {
-  background: url('../images/wood.jpg');
-}
-
-.white {
-  background: #FFF;
-}
-
-.center {
-	display: block;
-	margin-left:auto;
-	margin-right:auto;
-	width:60%;
-}
-
-.brand-img {
-	height: 25px;
-}
-
-.page-fix {
-	position: relative;
-	top: -50px;
-	min-height: 400px;
-	padding-top: 50px;
-	padding-left: 10px;
-	padding-right: 10px;
-	padding-bottom: 10px;
-	border-radius:25px;
-}
+body{background:#fff;}
+.wrapper{max-width:960px;margin:0 auto;}
+.logo{background:transparent url(../images/tidesdk-logo.png) no-repeat left center;height:70px;font-size:30px;color:#888;margin-top:10px;margin-bottom:15px;text-align:right;line-height:92px;padding:0 10px 0 0}
+a{text-decoration:none;color:#f05523;}a:hover{text-decoration:underline;}
+table {font-size: 14px; background:#fff;-moz-box-shadow: 0 0 1px #ddd;
+-webkit-box-shadow: 0 0 1px #ddd;
+box-shadow: 0 0 1px #ddd;}
+.table th,.table td{padding:12px 8px;line-height:18px;text-align:left;vertical-align:top;border-top:1px solid #ddd;}
+.table th{font-weight:bold;}
+i{margin:0 auto;display:block !important;width:18px;height:18px;text-indent:-3000px;}
+.win{background-image:url(../images/win-ico.png)}
+.mac{background-image:url(../images/mac-ico.png)}
+.lin{background-image:url(../images/lin-ico.png)}
+.home{float:right;padding-right:15px;}
