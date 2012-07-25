@@ -1,13 +1,13 @@
 module Build::Controllers
 
   $paths = [
-    '../builds/fedora-x86/',
-    '../builds/fedora-x86-64/',
-    '../builds/osx-x86-64/',
-    '../builds/ubuntu-x86/',
-    '../builds/ubuntu-x86-64/',
-    '../builds/win-x86/',
-    '../builds/win-x86-64/'
+    './builds/fedora-x86/',
+    './builds/fedora-x86-64/',
+    './builds/osx-x86-64/',
+    './builds/ubuntu-x86/',
+    './builds/ubuntu-x86-64/',
+    './builds/win-x86/',
+    './builds/win-x86-64/'
   ]
   
   def topFiles(path)
@@ -50,7 +50,7 @@ module Build::Controllers
   class Recent < R '/recent/([^/]+)/([^/]+)'
     def get(arch_dir, platform_str)
       @builds = Array.new
-      path = '../builds/' + arch_dir + '/'
+      path = './builds/' + arch_dir + '/'
       count = 0
       topFiles(path).each { |f|
         count += 1
@@ -98,7 +98,7 @@ module Build::Controllers
   
   class Builds < R '/builds/([^/]+)/([^/]+)'
     def get(dir, filename)
-      file = IO.read("../builds/#{dir}/#{filename}")
+      file = IO.read("./builds/#{dir}/#{filename}")
       @headers['Content-Type'] = "application/zip; charset=utf-8"
       @headers['Content-Disposition'] = "attachment; filename=\"#{filename}\""
       @body = file
