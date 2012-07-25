@@ -20,6 +20,9 @@ TideSDK-1.2.1.RC1-2f3a782a-osx-10.6.8-x86-64.zip
 
 This project was built in Ruby on the Camping Microframework
 
-To install it, gem install camping
+To install it: 
+	gem install camping
+	gem install actionpack
 
-To run it, camping build.rb
+To run it:
+	camping build.rb
